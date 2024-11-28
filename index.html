@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Phonebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #f4f4f9;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            background-color: #5977b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #3d5d9d;
+        }
+
+        #result {
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .success {
+            color: rgb(0, 103, 0);
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>☎️ Phonebook 📕</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="InputText" placeholder="Search contacts..." />
+            <button onclick="search()">Search</button>
+        </div>
+        <div id="result"></div>
+    </main>
+    <script>
+        const contacts = {
+            arbaj: "9876543210",
+            balaji: "2365147782",
+            kunal: "8564791372",
+            parvej: "64792813450",
+        };
+
+        function search() {
+            const inputElement = document.getElementById("InputText");
+            const inputText = inputElement.value.toLowerCase().trim();
+
+            const result = document.getElementById("result");
+            if (contacts[inputText]) {
+                result.className = "success";
+                result.innerText = `${inputText}: ${contacts[inputText]}`;
+            } else {
+                result.className = "error";
+                result.innerText = "Contact not found";
+            }
+        }
+    </script>
+</body>
+</html>
